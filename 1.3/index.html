@@ -80,6 +80,251 @@
 			}
 	};
 
+	var programme1 = `#include <iostream>
+using namespace std;
+
+int main()
+{
+    float notes[6] = {12.5, 16, 16.5, 14.25, 15.75, 18};
+    float somme = 0;
+
+    for (int i = 0; i < sizeof(notes) / sizeof(int); i++)
+    {
+        somme += notes[i];
+    }
+    
+    cout << "Moyenne des notes : " << somme / (sizeof(notes) / sizeof(float));
+    
+    return 0;
+}`;
+	var programme2 = `#include <iostream>
+using namespace std;
+
+int main()
+{
+    int resultats[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    int frequences[6] = {0, 0, 0, 0, 0, 0};
+    int de;
+
+    for (int i = 0; i < sizeof(resultats) / sizeof(int); i++)
+    {
+        de = 0;
+
+        while (de < 1 || de > 6)
+        {
+            cout << "Résultat du dé : ";
+            cin >> de;
+        }
+
+        resultats[i] = de;
+        frequences[de - 1]++;
+    }
+
+    int positionMode = 0;
+    int frequence = frequences[0];
+
+    for (int i = 0; i < sizeof(frequences) / sizeof(int); i++)
+    {
+        if (frequence < frequences[i])
+        {
+            frequence = frequences[i];
+            positionMode = i;
+        }
+    }
+    
+    cout << "Le mode de la série de données est " << positionMode + 1 << "avec une fréquence de " << frequence;
+    
+    return 0;
+}`;
+	var programme5 = `#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    vector<int> resultats = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    vector<int> frequences = {0, 0, 0, 0, 0, 0};
+    int de;
+
+    for (int i = 0; i < resultats.size(); i++)
+    {
+        de = 0;
+
+        while (de < 1 || de > 6)
+        {
+            cout << "Résultat du dé : ";
+            cin >> de;
+        }
+
+        resultats[i] = de;
+        frequences[de - 1]++;
+    }
+
+    int positionMode = 0;
+    int frequence = frequences[0];
+
+    for (int i = 0; i < frequences.size(); i++)
+    {
+        if (frequence < frequences[i])
+        {
+            frequence = frequences[i];
+            positionMode = i;
+        }
+    }
+    
+    cout << "Le mode de la série de données est " << positionMode + 1 << "avec une fréquence de " << frequence;
+    
+    return 0;
+}`;
+	var programme6 = `#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    vector<float> notes = {12.5, 16, 16.5, 14.25, 15.75, 18};
+    float somme = 0;
+
+    for (int i = 0; i < notes.size(); i++)
+    {
+        somme += notes[i];
+    }
+
+    cout << "Moyenne des notes : " << somme / notes.size();
+
+    return 0;
+}`;
+	var programme7 = `#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    vector<float> notes;
+    float somme = 0;
+
+    int nbrNotes = -1;
+    float note;
+
+    while (nbrNotes < 0)
+    {
+        cout << "Nombre de notes : ";
+        cin >> nbrNotes;
+    }
+
+    for (int i = 0; i < nbrNotes; i++)
+    {
+        note = -1;
+
+        while (note < 0 || note > 20)
+        {
+            cout << "Note: ";
+            cin >> note;
+        }
+
+        notes.push_back(note);
+    }
+
+    for (int i = 0; i < notes.size(); i++)
+    {
+        somme += notes[i];
+    }
+
+    cout << "Moyenne des notes : " << somme / notes.size();
+
+    return 0;
+}`;
+	var programme8 = `#include <iostream>
+using namespace std;
+
+int main()
+{
+    int * ptr = new int;
+    
+    cout << "Adresse stockée : " << ptr << " valeur stockée : " << *ptr;
+
+    return 0;
+}`;
+	var programme9 = `#include <iostream>
+using namespace std;
+
+int main()
+{
+    int * ptr = new int;
+    int nbr = 5;
+
+    ptr = &nbr;
+
+    cout << "valeur de : " << nbr << " | adresse : " << &nbr << endl;
+    cout << "valeur de : " << ptr << " | valeur pointée : " << *ptr << endl;
+
+    return 0;
+}`;
+	var programme10 = `#include <iostream>
+using namespace std;
+
+int main()
+{
+    int * ptr = new int;
+
+    *ptr = 7;
+
+    cout << "valeur de : " << ptr << " | valeur pointée : " << *ptr << endl;
+
+    return 0;
+}`;
+	var programme11 = `#include <iostream>
+using namespace std;
+
+int main()
+{
+    int * ptr = new int;
+    int nbr = 5;
+
+    ptr = &nbr;
+    nbr = 6622;
+
+    cout << "valeur de : " << nbr << " | adresse : " << &nbr << endl;
+    cout << "valeur de : " << ptr << " | valeur pointée : " << *ptr << endl;
+
+    return 0;
+}`;
+	var programme12 = `#include <iostream>
+using namespace std;
+
+int main()
+{
+    int tableau[4] = {25, -1, 6, 42};
+
+    int * ptr = tableau;
+    
+    for (int i = 0; i < sizeof(tableau) / sizeof(int); i++)
+    {
+        cout << "Élément #" << i + 1 << " du tableau : " << *ptr << endl;
+        ptr++;
+    }
+
+    return 0;
+}`;
+	var programme13 = `#include <iostream>
+using namespace std;
+
+int main()
+{
+    int * ptr = new int;
+    int nbr = 5;
+
+    ptr = &nbr;
+    nbr = 6622;
+
+    cout << "valeur de : " << nbr << " | adresse : " << &nbr << endl;
+    cout << "valeur de : " << ptr << " | valeur pointée : " << *ptr << endl;
+
+    delete ptr;
+
+    return 0;
+}`;
+
 
         </script>
   </head>
@@ -121,7 +366,7 @@
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ## Exemple : stocker des notes dans une variable et afficher la moyenne
-<img src="assets/programme1.png" alt="" style="object-fit: scale-down">
+<img src="assets/programme1.png" title="Clique pour le code" onclick = "navigator.clipboard.writeText(programme1)" alt="" style="object-fit: scale-down;max-height:60%;">
 
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
@@ -147,7 +392,7 @@
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ## Réponse
-<img src="assets/programme2.png" alt="" style="object-fit: scale-down; max-width:70%">
+<img src="assets/programme2.png" title="Clique pour le code" onclick = "navigator.clipboard.writeText(programme2)" alt="" style="object-fit: scale-down;max-height:60%;">
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -204,7 +449,7 @@ Ce programme ne fonctionne pas
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ## Exercice précédent adapté aux vecteurs
-<img src="assets/programme5.png" alt="" style="object-fit: scale-down; max-width:70%">
+<img src="assets/programme5.png" title="Clique pour le code" onclick = "navigator.clipboard.writeText(programme5)" alt="" style="object-fit: scale-down;max-height:60%;">
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -219,14 +464,14 @@ Ce programme ne fonctionne pas
 
 ## Exercice : modifier ce programme pour utiliser des vecteurs
 
-<img src="assets/programme1.png" alt="" style="object-fit: scale-down;max-width:70%">
+<img src="assets/programme1.png" title="Clique pour le code" onclick = "navigator.clipboard.writeText(programme1)" alt="" style="object-fit: scale-down;max-height:60%;">
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ## Réponse
 
-<img src="assets/programme6.png" alt="" style="object-fit: scale-down;max-width:70%">
+<img src="assets/programme6.png" title="Clique pour le code" onclick = "navigator.clipboard.writeText(programme6)" alt="" style="object-fit: scale-down;max-height:60%;">
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -240,7 +485,7 @@ Ce programme ne fonctionne pas
 
 ## Réponse
 
-<img src="assets/programme7.png" alt="" style="object-fit: scale-down;max-height:80%">
+<img src="assets/programme7.png" title="Clique pour le code" onclick = "navigator.clipboard.writeText(programme7)" alt="" style="object-fit: scale-down;max-height:60%;">
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -274,7 +519,7 @@ Ce programme ne fonctionne pas
 - Utiliser l'étoile `*` pour préciser au compilateur que `ptr` est un pointeur
 - `ptr` contient l'adresse, `*ptr` la valeur stockée à l'adresse `ptr` (**valeur pointée**)
 
-<img src="assets/programme8.png" alt="" style="object-fit: scale-down;max-height:80%">
+<img src="assets/programme8.png" title="Clique pour le code" onclick = "navigator.clipboard.writeText(programme8)" alt="" style="object-fit: scale-down;max-height:60%;">
 
 <div class="callout callout-color1">
 <div class="callout-title">
@@ -286,7 +531,7 @@ Erreur fréquente
 </div>
 </div>
 <div class="callout-content">
-Ne pas oublier d'initialiser le pointeur !
+Ne pas oublier d'initialiser le pointeur ! Un pointeur non alloué est égal à un `nullptr`.
 </div>
 </div>
 
@@ -312,7 +557,7 @@ Ne pas oublier d'initialiser le pointeur !
 
 ## Modifier manuellement la valeur pointée
 
-<img src="assets/programme10.png" alt="" style="object-fit: scale-down;max-width:70%">
+<img src="assets/programme10.png" title="Clique pour le code" onclick = "navigator.clipboard.writeText(programme10)" alt="" style="object-fit: scale-down;max-height:60%;">
 <img src="assets/console5.png" alt="" style="object-fit: scale-down;max-width:70%">
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
@@ -320,7 +565,7 @@ Ne pas oublier d'initialiser le pointeur !
 
 ## Utiliser l'adresse d'une variable déjà définie
 
-<img src="assets/programme9.png" alt="" style="object-fit: scale-down;max-width:70%">
+<img src="assets/programme9.png" title="Clique pour le code" onclick = "navigator.clipboard.writeText(programme9)" alt="" style="object-fit: scale-down;max-height:60%;">
 <img src="assets/console4.png" alt="" style="object-fit: scale-down;max-width:70%">
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
@@ -328,7 +573,7 @@ Ne pas oublier d'initialiser le pointeur !
 
 ## Exercice : prédire la sortie de ce programme
 
-<img src="assets/programme11.png" alt="" style="object-fit: scale-down;max-width:70%">
+<img src="assets/programme11.png" title="Clique pour le code" onclick = "navigator.clipboard.writeText(programme11)" alt="" style="object-fit: scale-down;max-height:60%;">
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -358,7 +603,7 @@ Modifier la valeur pointée de `ptr` modifie la valeur de `nbr` !
 
 ## Exercice : prédire la sortie de ce programme
 
-<img src="assets/programme12.png" alt="" style="object-fit: scale-down;">
+<img src="assets/programme12.png" title="Clique pour le code" onclick = "navigator.clipboard.writeText(programme12)" alt="" style="object-fit: scale-down;max-height:60%;">
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -374,7 +619,7 @@ Modifier la valeur pointée de `ptr` modifie la valeur de `nbr` !
 
 La mémoire allouée pour un pointeur ne se désalloue pas automatiquement. Il faut le faire soit même.
 
-<img src="assets/programme13.png" alt="" style="object-fit: scale-down;">
+<img src="assets/programme13.png" title="Clique pour le code" onclick = "navigator.clipboard.writeText(programme13)" alt="" style="object-fit: scale-down;max-height:60%;">
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
