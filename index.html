@@ -38,6 +38,25 @@
       top: 4.5%;
     }
 
+    .videoUl li a {
+      color: #eeeedd;
+      background: #333;
+      max-width: 200px;
+      padding: 12px;
+      display: block;
+    }
+
+    .videoUl li a:hover {
+      text-decoration: none;
+    }
+
+    #playlist {
+      width: 400px;
+      margin: auto;
+      padding: 100;
+      list-style: none;
+    }
+
   </style>
 </head>
 
@@ -46,6 +65,66 @@
       date = data[0].updated_at;
       document.getElementsByClassName("update")[0].innerText = `Dernière mise à jour le ${String(date).split("T")[0]}`;
     });'>
+  </script>
+  <script>
+    
+    setTimeout(init, 200)
+    
+    init();
+
+function init(){
+    var videoplaylist = document.getElementById('videoplaylist');
+    var playlist = document.getElementById('playlist');
+    var tracks = playlist.getElementsByTagName('a');
+    videoplaylist.volume = 0.10;
+    //videoplaylist.play();
+    
+    for(var track in tracks) {
+      var link = tracks[track];
+      if(typeof link === "function" || typeof link === "number") continue;
+      
+			link.addEventListener('click', function(e) {
+      	e.preventDefault();
+        var song = this.getAttribute('href');
+       	run(song, videoplaylist, this);
+      });
+    }
+    
+    videoplaylist.addEventListener('ended',function(e) {
+        for(var track in tracks) {
+					var link = tracks[track];
+          var nextTrack = parseInt(track) + 1;
+        	if(typeof link === "function" || typeof link === "number") continue;
+          if(!this.src) this.src = tracks[0];
+          if(track == (tracks.length - 1)) nextTrack = 0;
+                                	console.log(nextTrack);
+        	if(link.getAttribute('href') === this.src) {
+          	var nextLink = tracks[nextTrack];
+          	run(nextLink.getAttribute('href'), videoplaylist, nextLink);
+            break;
+          }
+        }
+    });
+}
+
+function run(song, videoplaylist, link){
+				var parent = link.parentElement;
+
+				//quitar el active de todos los elementos de la lista
+				var items = parent.parentElement.getElementsByTagName('li');
+        for(var item in items) {
+					if(items[item].classList)
+        		items[item].classList.remove("active");
+        }
+        
+        //agregar active a este elemento
+        parent.classList.add("active");
+        
+        //tocar la cancion
+        videoplaylist.src = song;
+        videoplaylist.load();
+        videoplaylist.play();
+}
   </script>
     <h1><div class="container"><div class="pageTitle">Stan Robotix - Programmation</div><div class="annee">2025-2026</div></div></h1>
     <h3>Chef d'équipe : Timothée</h3>
@@ -83,7 +162,42 @@
     <li><a href="3.2/index.html">PID</a></li>
   </ul>
 <h2>Formations électronique par André</h2>
-<iframe width="560" height="315" src="https://www.youtube.com/playlist?list=PLEng6tl1XQZ4C--1gDhDblPOzIrOjN0LU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<div style="margin: auto; overflow: hidden;">
+  <video style="float: left;" width="560" height="315" id="videoplaylist" preload="auto" tabindex="0" controls="" >
+    <source src="videos/01.mp4">
+  </video>
+
+  <ul class = "videoUl" id="playlist" style="margin-left: 540px;list-style-type: none;">
+      <li class="active">
+        <a href="videos/01.mp4">
+          Présentation des outils
+        </a>
+      </li>
+      <li>
+          <a href="videos/02.mp4">
+              Présentation des embouts
+          </a>
+      </li>
+      <li>
+          <a href="videos/03.mp4">
+              Tutoriel câblage
+          </a>
+      </li>
+      <li>
+          <a href="videos/04.mp4">
+              Présentation hardware
+          </a>
+      </li>
+      <li>
+          <a href="videos/05.mp4">
+              Tutoriel soudure
+          </a>
+      </li>
+  </ul>
+</div>
+<br>
+
 
   <h2>Calendrier approximatif</h2>
   <h3>2025</h3>
