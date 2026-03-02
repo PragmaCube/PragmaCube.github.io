@@ -1,0 +1,8 @@
+[
+  { "subject": "Programmation", "day": "Mercredi", "start": "17:30", "end": "19:30", "color": "#4CAF50" },
+  { "subject": "Programmation", "day": "Vendredi", "start": "17:30", "end": "19:30", "color": "#4CAF50" },
+  { "subject": "Construction", "day": "Jeudi", "start": "17:30", "end": "19:30", "color": "#b300b3" },
+  { "subject": "Construction", "day": "Vendredi", "start": "17:30", "end": "19:30", "color": "#b300b3" },
+  { "subject": "Design", "day": "Mercredi", "start": "17:30", "end": "19:30", "color": "#FF9800" },
+  { "subject": "Design", "day": "Vendredi", "start": "17:30", "end": "19:30", "color": "#FF9800" }
+]

@@ -117,7 +117,7 @@ input, select, textarea {
 
 	body, input, select, textarea {
 		color: #fff;
-		font-family: "Source Sans Pro", Helvetica, sans-serif;
+		font-family: rodinProL, sans-serif;
 		font-size: 14pt;
 		font-weight: 400;
 		line-height: 1.75;
@@ -204,7 +204,6 @@ input, select, textarea {
 
 	h1, h2, h3, h4, h5, h6 {
 		color: #fff;
-		font-family: "Raleway", Helvetica, sans-serif;
 		font-weight: 800;
 		letter-spacing: 0.25em;
 		line-height: 1.65;
@@ -1789,7 +1788,6 @@ input, select, textarea {
 		-ms-justify-content: -ms-flex-end;
 		justify-content: flex-end;
 		border-bottom: 0;
-		font-family: "Raleway", Helvetica, sans-serif;
 		font-size: 0.6em;
 		font-weight: 400;
 		letter-spacing: 0.25em;
@@ -1873,7 +1871,6 @@ input, select, textarea {
 		color: #fff !important;
 		cursor: pointer;
 		display: inline-block;
-		font-family: "Raleway", Helvetica, sans-serif;
 		font-size: 0.6em;
 		font-weight: 800;
 		height: 4.8125em;
@@ -2004,7 +2001,6 @@ input, select, textarea {
 				text-rendering: auto;
 				line-height: 1;
 				text-transform: none !important;
-				font-family: 'Font Awesome 5 Free';
 				font-weight: 900;
 			}
 
@@ -2089,7 +2085,6 @@ input, select, textarea {
 			text-rendering: auto;
 			line-height: 1;
 			text-transform: none !important;
-			font-family: 'Font Awesome 5 Free';
 			font-weight: 900;
 		}
 
@@ -2182,7 +2177,6 @@ input, select, textarea {
 				text-rendering: auto;
 				line-height: 1;
 				text-transform: none !important;
-				font-family: 'Font Awesome 5 Free';
 				font-weight: 900;
 			}
 
@@ -2257,7 +2251,6 @@ input, select, textarea {
 			text-rendering: auto;
 			line-height: 1;
 			text-transform: none !important;
-			font-family: 'Font Awesome 5 Free';
 			font-weight: 400;
 		}
 
@@ -2271,10 +2264,6 @@ input, select, textarea {
 
 		.icon.solid:before {
 			font-weight: 900;
-		}
-
-		.icon.brands:before {
-			font-family: 'Font Awesome 5 Brands';
 		}
 
 		.icon.suffix:before {
@@ -2609,7 +2598,6 @@ input, select, textarea {
 
 				ul.posts article header .published {
 					display: block;
-					font-family: "Raleway", Helvetica, sans-serif;
 					font-size: 0.6em;
 					font-weight: 400;
 					letter-spacing: 0.25em;
@@ -2673,7 +2661,6 @@ input, select, textarea {
 
 			.mini-post header .published {
 				display: block;
-				font-family: "Raleway", Helvetica, sans-serif;
 				font-size: 0.6em;
 				font-weight: 400;
 				letter-spacing: 0.25em;
@@ -2791,7 +2778,6 @@ input, select, textarea {
 					color: #fff;
 					display: block;
 					font-family: "Raleway", Helvetica, sans-serif;
-					font-size: 0.7em;
 					font-weight: 800;
 					letter-spacing: 0.25em;
 					margin-top: 0.5em;
@@ -2844,7 +2830,6 @@ input, select, textarea {
 				.post > footer .stats li {
 					border-left: solid 1px rgba(160, 160, 160, 0.3);
 					display: inline-block;
-					font-family: "Raleway", Helvetica, sans-serif;
 					font-size: 0.6em;
 					font-weight: 400;
 					letter-spacing: 0.25em;
@@ -3030,7 +3015,6 @@ input, select, textarea {
 	}
 
 	header p {
-		font-family: "Raleway", Helvetica, sans-serif;
 		font-size: 0.7em;
 		font-weight: 400;
 		letter-spacing: 0.25em;
@@ -3135,7 +3119,6 @@ input, select, textarea {
 
 	#header .dropbtn {
 	color: white;
-	font-family: "Raleway", Helvetica, sans-serif;
 	text-transform: uppercase;
 	font-size: 0.7em;
 	letter-spacing: 0.25em;
@@ -3224,7 +3207,6 @@ input, select, textarea {
 
 				#header .links ul li a {
 					border-bottom: 0;
-					font-family: "Raleway", Helvetica, sans-serif;
 					font-size: 0.7em;
 					font-weight: 400;
 					letter-spacing: 0.25em;
@@ -3273,7 +3255,6 @@ input, select, textarea {
 							text-rendering: auto;
 							line-height: 1;
 							text-transform: none !important;
-							font-family: 'Font Awesome 5 Free';
 							font-weight: 900;
 						}
 
@@ -3471,6 +3452,7 @@ input, select, textarea {
 			margin-left: auto;
   			margin-right: auto;
 			width: 50%;
+			max-height: 11em;
 			justify-content: center;
 		}
 
@@ -3533,7 +3515,6 @@ input, select, textarea {
 
 	#footer .copyright {
 		color: #aaaaaa;
-		font-family: "Raleway", Helvetica, sans-serif;
 		font-size: 0.5em;
 		font-weight: 400;
 		letter-spacing: 0.25em;
@@ -3609,7 +3590,6 @@ input, select, textarea {
 					}
 
 					#menu .links > li a p {
-						font-family: "Raleway", Helvetica, sans-serif;
 						font-size: 0.6em;
 						font-weight: 400;
 						letter-spacing: 0.25em;
@@ -3669,3 +3649,94 @@ input, select, textarea {
       align-items: center;
     }
 
+@font-face {
+    font-family: rodinProB;
+    src: url("../webfonts/FOT-Rodin\ Pro\ B.otf") format("opentype");
+}
+
+@font-face {
+    font-family: rodinProDB;
+    src: url("../webfonts/FOT-Rodin\ Pro\ DB.otf") format("opentype");
+}
+
+@font-face {
+    font-family: rodinProL;
+    src: url("../webfonts/FOT-Rodin\ Pro\ L.otf") format("opentype");
+}
+
+@font-face {
+    font-family: rodinProM;
+    src: url("../webfonts/FOT-Rodin\ Pro\ M.otf") format("opentype");
+}
+
+@font-face {
+    font-family: rodinProUB;
+    src: url("../webfonts/FOT-Rodin\ Pro\ UB.otf") format("opentype");
+}
+
+.schedule-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	margin-left: auto;
+    margin-right: auto;
+	margin-top: 1em;
+}
+
+#timetable {
+    display: grid;
+    border: 1px solid #ccc;
+}
+
+:root {
+    --slot-height: 40px;
+}
+
+.time-cell {
+    border-top: 1px solid #aaa;
+    height: var(--slot-height);
+    position: relative;
+}
+
+.time-header {
+    position: relative;
+    top: calc(var(--slot-height) / -2);
+}
+
+.time-half {
+    border-top: 1px dotted #bbb;
+}
+
+.day-header, .time-header {
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+}
+
+.subject-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.subject-block {
+    flex: 1;
+    height: 100%;
+}
+
+#legend {
+    width: fit-content;
+    margin: 20px auto 0 auto;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}

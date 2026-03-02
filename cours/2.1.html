@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="../assets/dist/reveal.css" />
+    <link rel="stylesheet" href="../assets/dist/theme/white.css" id="theme" />
+    <link rel="stylesheet" href="../assets/css/vs2015.css" />
+	<link rel="stylesheet" href="../assets/css/layout.css" />
+	<link rel="stylesheet" href="../assets/plugin/customcontrols/style.css">
+	<link rel="stylesheet" href="../assets/plugin/chalkboard/style.css">
+
+
+
+    <script defer src="../assets/dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Séance 7
+## Git et Github
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Versionner un programme
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Plusieurs personnes travaillent sur des sections différentes
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Chaque section est une « branche » du programme
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" --> On veut garder un historique des modifications
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: style="font-size: 70%" class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Versionner un programme
+
+Git est l'outil de versionnement et Git**hub** (**hub** pour git) est une plateforme de stockage dans le *cloud*
+
+<img src="../assets/img/2.1/" alt="" style="object-fit: scale-down;">
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: style="font-size: 70%" class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Un peu de vocabulaire...
+
+- **Espace de travail** : dossiers et fichiers directement visibles et dont on projette de modifier
+- **Index** : contenu modifié de l'espace de travail qui est **traqué**
+- **Dépôt local** : copie de l'entièreté du projet sur l'ordinateur (espace de travail, index et contenu des branches)
+- **Dépôt en ligne / sur le *cloud*** : copie de l'entièreté du projet sur un serveur, e.g. sur Github, (espace de travail, index et contenu des branches)
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: style="font-size: 70%" class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Commandes de base
+
+- Un ***commit*** synchronise le dépôt local avec l'espace de travail en se basant sur les fichiers traqués
+- ***push*** synchronise le dépôt en ligne avec le dépôt local
+- ***pull*** synchronise le dépôt local avec le dépôt en ligne (s'assurer d'avoir *push* les modifications)
+
+
+<img src="../assets/img/2.1/" alt="" style="object-fit: scale-down;max-height:50%">
+
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: style="font-size: 70%" class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Exemple
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: style="font-size: 70%" class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Exercice :
+
+- Créer une branche à partir de *2025-StanRobotix-Github*
+- Ajouter un fichier constants.h et *push* les changements sur sa branche
+- Modifier le fichier d'un autre groupe
+- Revenir à son fichier et le modifier une dernière fois
+</script></section></div>
+    </div>
+
+    <script src="../assets/dist/reveal.js"></script>
+
+    <script src="../assets/plugin/markdown/markdown.js"></script>
+    <script src="../assets/plugin/highlight/highlight.js"></script>
+    <script src="../assets/plugin/zoom/zoom.js"></script>
+    <script src="../assets/plugin/notes/notes.js"></script>
+    <script src="../assets/plugin/math/math.js"></script>
+	<script src="../assets/plugin/mermaid/mermaid.js"></script>
+	<script src="../assets/plugin/chart/chart.min.js"></script>
+	<script src="../assets/plugin/chart/plugin.js"></script>
+	<script src="../assets/plugin/customcontrols/plugin.js"></script>
+	<script src="../assets/plugin/chalkboard/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+		  RevealChalkboard, 
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: '../assets/plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+				{id: 'toggle-overview',
+				title: 'Toggle overview (O)',
+				icon: '<i class="fa fa-th"></i>',
+				action: 'Reveal.toggleOverview();'
+				},
+				{ icon: '<i class="fa fa-pen-square"></i>',
+				title: 'Toggle chalkboard (B)',
+				action: 'RevealChalkboard.toggleChalkboard();'
+				},
+				{ icon: '<i class="fa fa-pen"></i>',
+				title: 'Toggle notes canvas (C)',
+				action: 'RevealChalkboard.toggleNotesCanvas();'
+				},
+				{ icon: '<i class="fa fa-home" onclick = "window.location.href = \'../index.html\';"></i>',
+				title: 'Page d\'accueil',
+				action: ''
+				},
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":false,"transition":"slide","transitionSpeed":"normal"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
