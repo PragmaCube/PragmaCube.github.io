@@ -96,7 +96,7 @@
 ## Commands inline (1 / 2)
 
 - &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Utile pour des actions simples
-	- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> La condition d'arrêt (s'il y en a une) est liée à l'état d'un triggerà
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> La condition d'arrêt (s'il y en a une) est liée à l'état d'un trigger
 - &shy;<!-- .element: class="fragment" data-fragment-index="3" --> Plusieurs choix possibles, entre autres :
 	- &shy;<!-- .element: class="fragment" data-fragment-index="4" --> `Run` : utilisée surtout dans les `DefaultCommand` des subsystems
 	- &shy;<!-- .element: class="fragment" data-fragment-index="5" --> `RunOnce` : action ponctuelle (exemple : recalibrer l'IMU)
@@ -141,15 +141,14 @@ Nécessite l'utilisation de fonctions lambda
 <img src="../assets/img/3.4/limelight.webp" alt="" style="object-fit: scale-down;max-height:50%">
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center;" absolute="true">
 
 ## Caméra (2 / 2)
 
 - &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Pour la Limelight, nécessite le fichier `LimelightHelpers.h` (et idéalement un chassis Swerve)
 	- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> `GetTV()` : est-ce que la caméra voit une cible ?
-	- &shy;<!-- .element: class="fragment" data-fragment-index="3" --> `GetTX()` : angle horizontal entre la caméra et la cible (crosshair / réticule)
-	- &shy;<!-- .element: class="fragment" data-fragment-index="4" --> `GetTY()` : angle vertical entre la caméra et la cible
-	- &shy;<!-- .element: class="fragment" data-fragment-index="5" --> `getCameraPose_TargetSpace()` : position de la cible par rapport à la caméra
+	- &shy;<!-- .element: class="fragment" data-fragment-index="5" --> `getBotpose_TargetSpace()` : position du robot par rapport à la cible
+	- &shy;<!-- .element: class="fragment" data-fragment-index="6" --> `getBotPoseEstimate_wpiBlue()` : estimation de la position du robot dans le repère d'[origine bleu](https://docs.wpilib.org/en/stable/docs/software/basic-programming/coordinate-system.html#always-blue-origin)
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -157,7 +156,8 @@ Nécessite l'utilisation de fonctions lambda
 ## Feedforward / PID (1 / 2)
 
 - &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Souvent utilisé pour maintenir un pivot à une certaine position (contrer la gravité)
-	- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Il faut utiliser la méthode `SetVoltage()` du moteur
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Renvoie une valeur en volts
+		- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Il faut utiliser la méthode `SetVoltage()` du moteur
 	- &shy;<!-- .element: class="fragment" data-fragment-index="3" --> Le `SetPoint` est un angle
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
@@ -170,11 +170,6 @@ Nécessite l'utilisation de fonctions lambda
 Voltage pour atteindre un angle \(\theta\) :
 \[ V = V_g + V_{\text{PID}}(\theta) \]
 </p>
-
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-
 
 </script></section></div>
     </div>
