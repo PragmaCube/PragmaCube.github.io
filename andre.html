@@ -10,8 +10,9 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="icon" type="image/svg+xml" href="assets/logotix-2.svg">
 	</head>
-	<script src="jQuery.js" onload='$.getJSON("https:\\\\api.github.com/repos/PragmaCube/pragmacube.github.io/deployments", function(data) {
+	<script src="assets/js/jQuery.js" onload='$.getJSON("https:\\\\api.github.com/repos/PragmaCube/pragmacube.github.io/deployments", function(data) {
       date = data[0].updated_at;
       document.getElementsByClassName("update")[0].innerText = `Dernière mise à jour le ${String(date).split("T")[0]}`;
     });'>
@@ -147,7 +148,7 @@ function run(song, videoplaylist, link){
 
 				<!-- Footer -->
 					<section id="footer">
-						Fait par Raphaël</section>
+						Fait par Raphaël<br><div class="update"></div></section>
 
 			</div>
 

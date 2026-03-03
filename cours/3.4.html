@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <title>Command-Based Programming</title>
+    <title>Concepts avancés en programmation FRC</title>
     <link rel="stylesheet" href="../assets/dist/reveal.css" />
     <link rel="stylesheet" href="../assets/dist/theme/white.css" id="theme" />
     <link rel="stylesheet" href="../assets/css/vs2015.css" />
@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="../assets/plugin/chalkboard/style.css">
 	<link rel="icon" type="image/svg+xml" href="../assets/logotix-2.svg">
     <script defer src="../assets/dist/fontawesome/all.min.js"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 
 	<script type="text/javascript">
 		var forgetPop = true;
@@ -86,104 +87,93 @@
       <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-# Cours 9
-## WPILIB et le Command-Based Programming
+# Cours 11
+## Concepts avancés en programmation FRC
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## WPILIB
 
-- &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Bibliothèque officielle de FIRST pour coder sur un roboRIO
-	- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> 4 langages possibles : C++, Java, Labview et Python
-- &shy;<!-- .element: class="fragment" data-fragment-index="3" --> Deux documentations :
-	- &shy;<!-- .element: class="fragment" data-fragment-index="4" --> [frc-docs](https://docs.wpilib.org/en/stable/index.html) : tout ce qui a rapport avec la programmation
-	- &shy;<!-- .element: class="fragment" data-fragment-index="5" --> [allwpilib](https://github.wpilib.org/allwpilib/docs/release/cpp/index.html) : documentation type cppreference sur la bibliothèque
-- &shy;<!-- .element: class="fragment" data-fragment-index="6" --> Nécessite une version modifiée de VS Code
+## Commands inline (1 / 2)
 
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: style="font-size: 70%" class="drop" -->
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Utile pour des actions simples
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> La condition d'arrêt (s'il y en a une) est liée à l'état d'un triggerà
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" --> Plusieurs choix possibles, entre autres :
+	- &shy;<!-- .element: class="fragment" data-fragment-index="4" --> `Run` : utilisée surtout dans les `DefaultCommand` des subsystems
+	- &shy;<!-- .element: class="fragment" data-fragment-index="5" --> `RunOnce` : action ponctuelle (exemple : recalibrer l'IMU)
+	- &shy;<!-- .element: class="fragment" data-fragment-index="6" --> `Sequence` / `Parallel` : enchaîner plusieurs actions les unes après les autres ou en même temps
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Le Command-Based Programming
+## Commands inline (2 / 2)
 
-- &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Une des architectures possibles pour coder le robot
-- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Est constitué de deux structures fondamentales :
-	- &shy;<!-- .element: class="fragment" data-fragment-index="3" --> ***Subsystem*** : classe encapsulant un composant matériel (e.g. capteur, contrôleur de moteur...)
-	- &shy;<!-- .element: class="fragment" data-fragment-index="4" --> ***Command*** : classe encapsulant des actions spécifiques à exécuter (e.g. avancer puis actionner un piston) (nécessite des *susbsystems*)
+Nécessite l'utilisation de fonctions lambda
 
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: style="font-size: 70%" class="drop" -->
+```cpp
+[this]
+{
+	// Code à exécuter
+}
+```
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Le Command-Based Programming
+## Exemple .h
 
-<img src="../assets/img/3.1/architecture.png" alt="" style="object-fit: scale-down;max-height:80%">
+<img src="../assets/img/3.4/programme1.png" alt="" style="object-fit: scale-down;max-height:80%">
 
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: style="font-size: 70%" class="drop" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## La classe `RobotContainer`
+## Exemple .cpp
 
-- &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Relier les *commands* aux *subsytems*
-- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Relier des actions à exécuter aux boutons d'une manette / joystick
+<img src="../assets/img/3.4/programme2.png" alt="" style="object-fit: scale-down;max-height:80%">
 
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: style="font-size: 70%" class="drop" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Les Subsystems
+## Caméra (1 / 2)
 
-- &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Devrait permettre de contrôler un composant matériel (e.g. tourner un moteur à une puissance X)
-- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> *getters* / *setters* pas tout le temps nécessaire !
-- &shy;<!-- .element: class="fragment" data-fragment-index="3" --> Méthode `periodic()` : utiliser pour la télémétrie
-- &shy;<!-- .element: class="fragment" data-fragment-index="4" --> `setDefaultCommand()` (à configurer dans `RobotContainer`) : actions à réaliser par le subsystem lorsqu'il n'est pas utilisé par une *command*
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Limelight 3 pour la reconnaissance d'objets et suivi de cibles (AprilTags)
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> USBCamera pour streamer la vue de la caméra sur le Driver Station ou le SmartDashboard
 
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: style="font-size: 70%" class="drop" -->
+<img src="../assets/img/3.4/limelight.webp" alt="" style="object-fit: scale-down;max-height:50%">
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Le CommandScheduler
+## Caméra (2 / 2)
 
-<img src="../assets/img/3.1/commandscheduler.png" alt="" style="object-fit: scale-down;max-height:100%">
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Pour la Limelight, nécessite le fichier `LimelightHelpers.h` (et idéalement un chassis Swerve)
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> `GetTV()` : est-ce que la caméra voit une cible ?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" --> `GetTX()` : angle horizontal entre la caméra et la cible (crosshair / réticule)
+	- &shy;<!-- .element: class="fragment" data-fragment-index="4" --> `GetTY()` : angle vertical entre la caméra et la cible
+	- &shy;<!-- .element: class="fragment" data-fragment-index="5" --> `getCameraPose_TargetSpace()` : position de la cible par rapport à la caméra
 
-
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: style="font-size: 70%" class="drop" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
+## Feedforward / PID (1 / 2)
 
-## Les Commands
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Souvent utilisé pour maintenir un pivot à une certaine position (contrer la gravité)
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Il faut utiliser la méthode `SetVoltage()` du moteur
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" --> Le `SetPoint` est un angle
 
-- &shy;<!-- .element: class="fragment" data-fragment-index="1" --> 4 méthodes essentielles : 
-	- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> `initialize()`
-	- &shy;<!-- .element: class="fragment" data-fragment-index="3" --> `execute()`
-	- &shy;<!-- .element: class="fragment" data-fragment-index="4" --> `isFinished()` : renvoie `true` si la *command* doit se terminer, `false` sinon
-	- &shy;<!-- .element: class="fragment" data-fragment-index="5" --> `end()`
-- &shy;<!-- .element: class="fragment" data-fragment-index="6" --> `AddRequirements()` pour chaque *subsystem* dans le constructeur
-
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: style="font-size: 70%" class="drop" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Fichier `Constants.h`
+## Feedforward / PID (2 / 2)
 
-Stocke les constantes utilisées dans le code (exemple : ports, coefficients des PID, etc.)
+<p> Voltage pour maintenir un mécanisme immobilisé à un angle \(\theta\) :
+\[ V_g = K_g \cdot \cos(\theta) \]
+Voltage pour atteindre un angle \(\theta\) :
+\[ V = V_g + V_{\text{PID}}(\theta) \]
+</p>
 
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: style="font-size: 70%" class="drop" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-
-## Exemple :
-
-
-&shy; <!-- .element: class="fragment" data-fragment-index="1" -->Aucun exemple, vous devez apprendre par vous même !
-
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: style="font-size: 70%" class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-## Conseil pour gagner en rapidité
-
-- Clic droit sur `src/include/subsystems` ou `src/include/commands`
-- Cliquer sur `Create a new class / command`
-- Choisir `Subsystem` ou `Command`
-- Entrer le nom de la classe
-
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: style="font-size: 70%" class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 
 </script></section></div>
