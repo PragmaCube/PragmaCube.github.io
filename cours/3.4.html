@@ -89,9 +89,47 @@
 
 # Cours 11
 ## Concepts avancés en programmation FRC
+
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
+## Trigger (1 / 2)
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Permet d'activer des commandes
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Selon une entrée bouléenne
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" --> Permet différents types de contrôles:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="4" --> WhileTrue() : Active la commande tant que le trigger est vrai puis la désactive
+	- &shy;<!-- .element: class="fragment" data-fragment-index="5" --> OnTrue() : Active la commande quand le trigger est vrai (la commande doit s'arrêter elle-même)
+	- &shy;<!-- .element: class="fragment" data-fragment-index="5" --> ToggleOnTrue() : Active la commande quand le trigger est vrai et la désactive quand il redevient vrai (doit être faux entre temps)
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Trigger (2 / 2)
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Peut être créé explicitement
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Avec une fonction labda qui renvoie un booléen comme argument
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" --> Plus flexible
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" --> Peut être créé grâce à un CommandController
+	- &shy;<!-- .element: class="fragment" data-fragment-index="5" --> Les méthodes de ce controller renvoient des trigger liés à l'état des buttons
+	- &shy;<!-- .element: class="fragment" data-fragment-index="6" --> Plus concis
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Exemple explicit
+
+<img src="../assets/img/3.4/programme3.png" alt="" style="object-fit: scale-down;max-height:80%">
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Exemple CommandController
+
+<img src="../assets/img/3.4/programme4.png" alt="" style="object-fit: scale-down;max-height:80%">
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ## Commands inline (1 / 2)
 
@@ -141,7 +179,7 @@ Nécessite l'utilisation de fonctions lambda
 <img src="../assets/img/3.4/limelight.webp" alt="" style="object-fit: scale-down;max-height:50%">
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center;" absolute="true">
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ## Caméra (2 / 2)
 
