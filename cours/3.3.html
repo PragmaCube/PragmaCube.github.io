@@ -89,7 +89,7 @@
 # Cours 10
 ## Concepts de base en programmation FRC
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+<div id="unites" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 
 ## Unités 
@@ -103,7 +103,7 @@
 	- &shy;<!-- .element: class="fragment" data-fragment-index="7" --> `degree_t`
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+<div id="controle-moteurs" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 
 
@@ -129,7 +129,7 @@
 <img src="../assets/img/3.3/programme2.png" alt="" style="object-fit: scale-down;max-height:100%">
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+<div id="drivetrain" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ## Drivetrain (1 / 2)
 
@@ -162,7 +162,7 @@
 <img src="../assets/img/3.3/programme4.png" alt="" style="object-fit: scale-down;max-height:100%">
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+<div id= "capteurs" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ## Capteurs (1 / 2)
 
@@ -204,7 +204,7 @@
 <img src="../assets/img/3.3/programme6.png" alt="" style="object-fit: scale-down;">
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+<div id="interfaces-homme-machine" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ## Interfaces homme / machine
 
@@ -336,6 +336,11 @@ Voir le prochain cours pour un exemple avec les commands inline.
 				title: 'Page d\'accueil',
 				action: ''
 				},
+				{
+					icon: '<i class="fa fa-list"></i>',
+					title: 'Table des matières',
+					action: 'toggleTOC();'
+				}
 			]
 		},
       };
@@ -349,6 +354,66 @@ Voir le prochain cours pour un exemple avec les commands inline.
     <script>
       Reveal.initialize(options);
     </script>
+
+	<!-- Table des matières overlay -->
+		<style>
+		#toc-overlay{position:fixed;left:20px;bottom:80px;z-index:9999;display:none}
+		#toc-overlay.visible{display:block}
+		#toc-overlay .toc-box{background:#fff;color:#000;padding:12px;border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,.2);max-height:70vh;overflow:auto;min-width:220px}
+		#toc-overlay .toc-close{float:right;border:none;background:transparent;font-size:18px;cursor:pointer}
+		#toc-overlay ul{list-style:none;padding:0;margin:0}
+		#toc-overlay li{margin:6px 0}
+		#toc-overlay a{color:inherit;text-decoration:none;cursor:pointer}
+		@media (prefers-color-scheme: dark){#toc-overlay .toc-box{background:#222;color:#eee}}
+		</style>
+
+		<div id="toc-overlay" aria-hidden="true">
+			<div class="toc-box">
+				<button class="toc-close" aria-label="Fermer">×</button>
+				<ul id="toc-list"></ul>
+			</div>
+		</div>
+
+		<script>
+		(function(){
+			function buildTOC(){
+				var list = document.getElementById('toc-list');
+				if(!list) return;
+				list.innerHTML = '';
+				var slides = document.querySelectorAll('.reveal .slides > section');
+				slides.forEach(function(section, i){
+					var contentDiv = section.querySelector('div[id]');
+					if(!contentDiv) return;
+					var id = contentDiv.id;
+					var titleEl = contentDiv.querySelector('h1,h2,h3,h4,strong');
+					var title = (titleEl && titleEl.innerText.trim()) || id;
+					var li = document.createElement('li');
+					var a = document.createElement('a');
+					a.href = 'javascript:void(0)';
+					a.textContent = String(title).charAt(0).toUpperCase() + String(title).toLowerCase().slice(1);
+					a.addEventListener('click', function(e){
+						Reveal.slide(i);
+						toggleTOC();
+					});
+					li.appendChild(a);
+					list.appendChild(li);
+				});
+			}
+
+			window.toggleTOC = function(){
+				var overlay = document.getElementById('toc-overlay');
+				if(!overlay) return;
+				overlay.classList.toggle('visible');
+				overlay.setAttribute('aria-hidden', !overlay.classList.contains('visible'));
+				if(overlay.classList.contains('visible')) buildTOC();
+			};
+
+			document.addEventListener('DOMContentLoaded', function(){
+				var closeBtn = document.querySelector('#toc-overlay .toc-close');
+				if(closeBtn) closeBtn.addEventListener('click', toggleTOC);
+			});
+		})();
+		</script>
   </body>
 
   <!-- created with Advanced Slides -->
