@@ -1,0 +1,9 @@
+.layout {
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  width: 20%;
+  display: ruby;
+  gap: 16%;
+}
