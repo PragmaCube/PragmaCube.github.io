@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Intégration</title>
+    <link rel="stylesheet" href="../assets/dist/reveal.css" />
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../assets/dist/theme/white.css" id="theme" />
+    <link rel="stylesheet" href="../assets/css/vs2015.css" />
+	<link rel="stylesheet" href="../assets/css/layout.css" />
+	<link rel="stylesheet" href="../assets/css/style.css" />
+	<link rel="stylesheet" href="../assets/plugin/customcontrols/style.css">
+	<link rel="stylesheet" href="../assets/plugin/chalkboard/style.css">
+	<link rel="icon" type="image/svg+xml" href="../assets/logotix-2.svg">
+    <script defer src="../assets/dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Cours 6
+## Intégration
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div id="introduction" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Attention
+- Le calcul intégral est un cours à part entière
+- Ce que ce cours ne fait pas : couvrir les différentes techniques d'intégration
+- Ce que fait ce cours : donner une idée générale de l'intégrale et comment l'utiliser pour résoudre des problèmes
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div id="introduction" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+
+## Calculer l'aire sous une courbe
+
+<img src="../assets/img/maths/sommeriemann.gif">
+
+Utiliser des rectangles progressivement plus fins
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Calculer l'aire sous une courbe
+
+Rectangle donné par les points $(x_i,0)$, $(x_{i+1},0)$, $(x_{i+1},f(x_{i+1}))$ et $(x_i,f(x_i))$, avec $x_i< x_{i+1}$
+
+- Largeur : $x_{i+1}-x_i$
+- Hauteur : $f(x_{i})$ ou $f(x_{i+1})$ (en fonction de la convention)
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Calculer l'aire sous une courbe
+
+L'aire sous la courbe est environ la somme des aires des rectangles. Pour $a=x_0< x_2 <... < x_n =b$, l'aire sous la fonction $f$ est
+
+$\mathcal A(f)=f(x_1)(x_1-x_0)+f(x_2)(x_2-x_1)+...+f(x_n)(x_n-x_{n-1})\newline=\sum_{i=1}^n f(x_i)(x_{i}-x_{i-1})$
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Calculer l'aire sous une courbe
+
+- Diminuer l'espacement entre les $x_i\Longrightarrow $ précision augmente
+- L'écart infinitésimal se note $dx$
+- La somme devient « continue »
+$$
+\int_a^b f(x)dx~~\text{est l'intégrale de $f$ sur [a,b]}
+$$
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Comment calculer une intégrale ?
+
+Soit $f:[a,b]\to\mathbb R$ une fonction dérivable. Alors
+$$
+\int_a^bf'(x)dx=f(b)-f(a).
+$$
+C'est le théorème fondamental du calcul intégral.
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Comment calculer une intégrale ?
+
+En particulier,
+$$
+\int_a^xf'(t)dt=f(x)-f(a).
+$$
+L'intégrale renverse la dérivée.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Exemple : calculer l'intégrale de $f(x)=3x-1$ entre $1$ et $4$
+
+On pose $g'(x)=f(x)=3x-1$.
+- Quelle fonction donne $3x$ en la dérivant ?
+$$
+3x=3\frac{2x}{2}=\frac{3}{2}2x~~\text{donc c'est }\frac{3}{2}x^2
+$$
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Exemple (suite)
+
+- Quelle fonction donne $3x$ en la dérivant ?
+$$- 1= - 1 \times 1~~\text{c'est } - x
+$$
+On déduit que $g(x)=\frac{3}{2}x^2-x+c$, $c\in\mathbb R$.
+- Pourquoi $+c$ ? Une infinité de fonctions ont comme dérivée $g'(x)$, car dériver une constante donne 0
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Exemple (suite)
+
+$$
+\int_1^4 g'(x)dx=g(4)-g(1)=\frac{3}{2}4^2-4+c-\left(\frac{3}{2}\times 1-1+c\right)\newline
+= \frac{45}{3}-3=12
+$$
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Gadget plus pratique : les primitives
+
+- $F$ est une primitive de $f$ si $F'=f$
+- $F+C$, $\forall C\in\mathbb R$ est aussi une primitive de $f$
+Pour calculer une intégrale, il suffit de calculer
+$$
+\int_a^b f(x)dx=F(b)-F(a).
+$$
+Connaître une primitive est donc suffisant.
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Tableau de primitives communes
+
+On omet le « $+ C$ » pour plus de lisibilité.
+<img src="../assets/img/maths/primitives.png">
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Propriétés
+
+Soient $f,g$ deux fonctions et $k,c\in\mathbb R$. On a
+- $\int_a^b f(x)+g(x)dx=\int_a^bf(x)dx+\int_a^b g(x)$
+- $\int_a^b kf(x)dx = k\int_a^bf(x)dx$
+- $\int_a^b f(x)dx+\int_a^cf(x)dx=\int_a^c f(x)dx$
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Techniques d'intégrations
+Il existe plusieurs techniques d'intégration (pas présentées ici), notamment
+$$
+\int_a^b g'(x)f(g(x))dx=\int_{g(a)}^{g(b)}f(x)dx~~\text{par substitution}\newline
+\int_a^b f'(x)g(x)dx=f(b)g(b)
+-f(a)g(a)
+-\int_a^bf(x)g'(x)dx
+~~\text{par parties}
+$$
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Applications
+
+- Travail d'une force le long d'une courbe
+- Trouver la trajectoire d'un objet
+- Résolution d'équations différentielles
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Équations différentielles
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Équations différentielles
+
+- Inconnue : fonction (pas une variable !)
+- En général, difficiles à résoudre
+- Utilité : trouver une trajectoire à partir du bilan des forces (2e loi de Newton)
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Équations différentielles
+
+Soit $y=f(x)$ une fonction de dérivées $y', y'',...,y^{(n)}$, où $y^{(n)}$ est la dérivée d'ordre $n$. Une équation différentielle est une équation de la forme
+$$
+g(x,y,y',...,y^{(n)})=0
+$$
+où $g$ est une fonction.
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Résolution d'équations différentielles
+
+- Beaucoup de techniques : équations linéaires, facteur intégrant, « deviner la solution »...
+- En robotique :
+	- Soit les équations sont assez faciles (il suffit d'intégrer)
+ 	- Soit les équations n'ont pas de solutions simples (il faut une solution numérique)
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Exemples
+
+$$
+y'=h(x),~~\text{est « facile » à résoudre (intégrer }h\text{)}
+$$
+Balistique avec frottements à hautes vitesses : il faut résoudre le système
+$$
+\begin{cases}
+mv_x'=-k\sqrt{v_x^2+v_y^2}v_x\newline
+mv_y'=-k\sqrt{v_x^2+v_y^2}v_y + mg
+\end{cases}
+$$
+qui pas de solutions explicites.
+
+</script></section></div>
+    </div>
+
+    <script src="../assets/dist/reveal.js"></script>
+
+    <script src="../assets/plugin/markdown/markdown.js"></script>
+    <script src="../assets/plugin/highlight/highlight.js"></script>
+    <script src="../assets/plugin/zoom/zoom.js"></script>
+    <script src="../assets/plugin/notes/notes.js"></script>
+    <script src="../assets/plugin/math/math.js"></script>
+	<script src="../assets/plugin/mermaid/mermaid.js"></script>
+	<script src="../assets/plugin/chart/chart.min.js"></script>
+	<script src="../assets/plugin/chart/plugin.js"></script>
+	<script src="../assets/plugin/customcontrols/plugin.js"></script>
+	<script src="../assets/plugin/chalkboard/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+		  RevealChalkboard, 
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: '../assets/plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+				{id: 'toggle-overview',
+				title: 'Toggle overview (O)',
+				icon: '<i class="fa fa-th"></i>',
+				action: 'Reveal.toggleOverview();'
+				},
+				{ icon: '<i class="fa fa-pen-square"></i>',
+				title: 'Toggle chalkboard (B)',
+				action: 'RevealChalkboard.toggleChalkboard();'
+				},
+				{ icon: '<i class="fa fa-pen"></i>',
+				title: 'Toggle notes canvas (C)',
+				action: 'RevealChalkboard.toggleNotesCanvas();'
+				},
+				{ icon: '<i class="fa fa-home" onclick = "window.location.href = \'../maths.html\';"></i>',
+				title: 'Page d\'accueil',
+				action: ''
+				}
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":false,"transition":"slide","transitionSpeed":"normal"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+		<!-- Table des matières overlay -->
+		<style>
+		#toc-overlay{position:fixed;left:20px;bottom:80px;z-index:9999;display:none}
+		#toc-overlay.visible{display:block}
+		#toc-overlay .toc-box{background:#fff;color:#000;padding:12px;border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,.2);max-height:70vh;overflow:auto;min-width:220px}
+		#toc-overlay .toc-close{float:right;border:none;background:transparent;font-size:18px;cursor:pointer}
+		#toc-overlay ul{list-style:none;padding:0;margin:0}
+		#toc-overlay li{margin:6px 0}
+		#toc-overlay a{color:inherit;text-decoration:none;cursor:pointer}
+		@media (prefers-color-scheme: dark){#toc-overlay .toc-box{background:#222;color:#eee}}
+		</style>
+
+		<div id="toc-overlay" aria-hidden="true">
+			<div class="toc-box">
+				<button class="toc-close" aria-label="Fermer">×</button>
+				<ul id="toc-list"></ul>
+			</div>
+		</div>
+
+		<script>
+		(function(){
+			function buildTOC(){
+				var list = document.getElementById('toc-list');
+				if(!list) return;
+				list.innerHTML = '';
+				var slides = document.querySelectorAll('.reveal .slides > section');
+				slides.forEach(function(section, i){
+					var contentDiv = section.querySelector('div[id]');
+					if(!contentDiv) return;
+					var id = contentDiv.id;
+					var titleEl = contentDiv.querySelector('h1,h2,h3,h4,strong');
+					var title = (titleEl && titleEl.innerText.trim()) || id;
+					var li = document.createElement('li');
+					var a = document.createElement('a');
+					a.href = 'javascript:void(0)';
+					a.textContent = String(title).charAt(0).toUpperCase() + String(title).toLowerCase().slice(1);
+					a.addEventListener('click', function(e){
+						Reveal.slide(i);
+						toggleTOC();
+					});
+					li.appendChild(a);
+					list.appendChild(li);
+				});
+			}
+
+			window.toggleTOC = function(){
+				var overlay = document.getElementById('toc-overlay');
+				if(!overlay) return;
+				overlay.classList.toggle('visible');
+				overlay.setAttribute('aria-hidden', !overlay.classList.contains('visible'));
+				if(overlay.classList.contains('visible')) buildTOC();
+			};
+
+			document.addEventListener('DOMContentLoaded', function(){
+				var closeBtn = document.querySelector('#toc-overlay .toc-close');
+				if(closeBtn) closeBtn.addEventListener('click', toggleTOC);
+			});
+		})();
+		</script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
