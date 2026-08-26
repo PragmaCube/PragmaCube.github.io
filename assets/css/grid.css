@@ -1,0 +1,187 @@
+body {
+  text-align: center;
+}
+
+
+.grid-container {
+  font-size: 16px;
+  display: grid;
+  grid-template-columns: auto repeat(6, 1fr);
+  /* Une colonne pour les heures, puis une colonne pour chaque jour */
+  grid-template-rows: auto;
+  width: 100%;
+  /* Une ligne pour les jours, une ligne pour les heures */
+}
+
+.days {
+  grid-row: 1;
+  /* La première rangée */
+  grid-column: 2 / -1;
+  /* Deuxième colonne jusqu'à la dernière */
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  /* Une colonne pour chaque jour */
+}
+
+.hours {
+  grid-column: 1;
+  /* La première colonne */
+  grid-row: 2 / -1;
+  /* Deuxième ligne jusqu'à la dernière */
+  display: grid;
+  grid-template-rows: 12vh repeat(10, 6vh);
+  /* Une ligne pour chaque heure */
+}
+
+.hours>div {
+  width: min-content;
+}
+
+.slots {
+  grid-column: 2 / -1;
+  grid-row: 2 / -1;
+  grid-template-rows: 12vh repeat(10, 6vh);
+  grid-template-columns: repeat(24, 1fr);
+}
+
+.slots>div {
+  border-radius: 5px;
+  margin: 0 3px;
+      display: flex;
+    /* text-align: center; */
+    align-items: center;
+    justify-content: center;
+}
+
+.lundi {
+  grid-column: 1 / span 4;
+}
+
+.mardi {
+  grid-column: 5 / span 4;
+}
+
+.mercredi {
+  grid-column: 9 / span 4;
+}
+
+.jeudi {
+  grid-column: 13 / span 4;
+}
+
+.vendredi {
+  grid-column: 17 / span 4;
+}
+
+.samedi {
+  grid-column: 21 / span 4;
+}
+
+.constj {
+  grid-column: 13 / span 4;
+  background-color: rgb(241, 184, 70);
+}
+
+.constv {
+  grid-column: 17 / span 2;
+  background-color: rgb(241, 184, 70);
+}
+
+.progth {
+  grid-column: 19 / span 2;
+  background-color: rgb(19, 169, 233);
+}
+
+.progtpb {
+  grid-column: 9 / span 4;
+  background-color: rgb(85, 189, 234);
+}
+
+.progtpa {
+  grid-column: 5 / span 4;
+  background-color: rgb(85, 189, 234);
+}
+
+.debut10h00 {
+  grid-row-start: 1;
+}
+
+.debut16h00 {
+  grid-row-start: 2;
+}
+
+.debut16h30 {
+  grid-row-start: 3;
+}
+
+.debut17h00 {
+  grid-row-start: 4;
+}
+
+.debut17h30 {
+  grid-row-start: 5;
+}
+
+.debut18h00 {
+  grid-row-start: 6;
+}
+
+.debut18h30 {
+  grid-row-start: 7;
+}
+
+.debut19h00 {
+  grid-row-start: 8;
+}
+
+.debut19h30 {
+  grid-row-start: 9;
+}
+
+.debut20h00 {
+  grid-row-start: 10;
+}
+
+.debut20h30 {
+  grid-row-start: 11;
+}
+
+.fin16h00 {
+  grid-row-end: 2;
+}
+
+.fin16h30 {
+  grid-row-end: 3;
+}
+
+.fin17h00 {
+  grid-row-end: 4;
+}
+
+.fin17h30 {
+  grid-row-end: 5;
+}
+
+.fin18h00 {
+  grid-row-end: 6;
+}
+
+.fin18h30 {
+  grid-row-end: 7;
+}
+
+.fin19h00 {
+  grid-row-end: 8;
+}
+
+.fin19h30 {
+  grid-row-end: 9;
+}
+
+.fin20h00 {
+  grid-row-end: 10;
+}
+
+.fin20h30 {
+  grid-row-end: 11;
+}

@@ -10,6 +10,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css"/>
+		<link rel="stylesheet" href="assets/css/grid.css">
 		<link rel="icon" type="image/svg+xml" href="assets/logotix-2.svg">
 	</head>
 		<script src="assets/js/jQuery.js" onload='$.getJSON("https:\\\\api.github.com/repos/PragmaCube/pragmacube.github.io/deployments", function(data) {
@@ -24,32 +25,9 @@
 
 				<!-- Header -->
 					<header id="header">
-						<h1><a href="index.html">Cours de C++ pour FRC</a></h1>
+						<h1><a href="index.html">Formations Stan Robotix</a></h1>
 						<nav class="links">
-							<ul>
-								<ul>
-								<li><a href="index.html#chapitre1">Chapitre 1</a></li>
-								<li><a href="index.html#chapitre2">Chapitre 2</a></li>
-								<li><a href="index.html#chapitre3">Chapitre 3</a></li>
-                <li>
-									<div class="dropdown">
-										<details>
-										<summary class="dropbtn">Documentation</summary>
-										<div class="dropdown-content">
-											<ul>
-											<li style="display: none;"></li>
-											<li><a href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html" target="_blank">WPILIB C++ API</a></li>
-											<li><a href="https://docs.wpilib.org/en/stable/index.html" target="_blank">FRC Control System </a></li>
-											<li><a href="https://codedocs.revrobotics.com/cpp/index.html" target="_blank">REVLib C++ API</a></li>
-											<li><a href="https://docs.ctr-electronics.com/" target="_blank">CTRE C++ API</a></li>
-											</ul>
-										</div>
-										</details>
-									</div>
-								</li>
-								<li><a href="horaire.html">Horaire</a></li>
-							</ul>
-							</ul>
+
 						</nav>
 					<nav class="main">
 							<ul>
@@ -65,57 +43,64 @@
 							<section>
 								<ul class="links">
 									<li>
-										<a href="#chapitre1">
-											<h3>Chapitre 1</h3>
-											<p>Bases du C++</p>
+										<a href="about.html">
+											<h3>À propos</h3>
+											<p>À propos</p>
 										</a>
 									</li>
 									<li>
-										<a href="#chapitre2">
-											<h3>Chapitre 2</h3>
-											<p>Versionnement et électronique</p>
+										<a href="grammar.html">
+											<h3>Grammaire</h3>
+											<p>Exercices de grammaire japonaise</p>
 										</a>
-									</li>
-									<li>
-										<a href="#chapitre3">
-											<h3>Chapitre 3</h3>
-											<p>Programmation FRC</p>
-										</a>
-									</li>
-									<li>
-										<div class="dropdown">
-										<details>
-										<summary class="dropbtn">Documentation</summary>
-										<div class="dropdown-content">
-											<ul>
-											<li style="display: none;"></li>
-											<li><a href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html" target="_blank">WPILIB C++ API</a></li>
-											<li><a href="https://docs.wpilib.org/en/stable/index.html" target="_blank">FRC Control System </a></li>
-											<li><a href="https://codedocs.revrobotics.com/cpp/index.html" target="_blank">REVLib C++ API</a></li>
-											<li><a href="https://docs.ctr-electronics.com/" target="_blank">CTRE C++ API</a></li>
-											</ul>
-										</div>
-										</details>
-									</div>
 									</li>
 								</ul>
 							</section>
-
 					</section>
 
-				<!-- Main -->
 					<div id="main">
-
-						<!-- Post -->
-							<article class="post">
-								<header>
-									<div class="schedule-wrapper">
-                    <div id="timetable"></div>
-                    <div id="legend"></div>
-                </div>
-								</header>
-              </article>
-					</div>
+						  <div class="grid-container">
+							<div class="days">
+							<div class="day-label">Lundi</div>
+							<div class="day-label">Mardi</div>
+							<div class="day-label">Mercredi</div>
+							<div class="day-label">Jeudi</div>
+							<div class="day-label">Vendredi</div>
+							<div class="day-label">Samedi</div>
+							</div>
+							<div class="hours">
+							<div class="hour-label">10:00</div>
+							<div class="hour-label">16:00</div>
+							<div class="hour-label">16:30</div>
+							<div class="hour-label">17:00</div>
+							<div class="hour-label">17:30</div>
+							<div class="hour-label">18:00</div>
+							<div class="hour-label">18:30</div>
+							<div class="hour-label">19:00</div>
+							<div class="hour-label">19:30</div>
+							<div class="hour-label">20:00</div>
+							<div class="hour-label">20:30</div>
+							</div>
+							<div class="slots grid-container">
+							<div class="mardi debut17h00 fin19h30 progtpa">
+								PROG - TP A
+							</div>
+							<div class="mercredi debut17h00 fin19h30 progtpb">
+								PROG - TP B
+							</div>
+							<div class="jeudi debut17h00 fin20h30 constj">
+								Construction
+							</div>
+							<div class="vendredi debut17h00 fin20h30 constv">
+								Construction
+							</div>
+							<div class="vendredi debut17h00 fin19h30 progth">
+								PROG - TH
+							</div>
+							</div>
+						</div>
+					
+                	</div>
 
 				<!-- Footer -->
 					<section id="footer">
