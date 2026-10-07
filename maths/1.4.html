@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../assets/dist/theme/white.css" id="theme" />
     <link rel="stylesheet" href="../assets/css/vs2015.css" />
 	<link rel="stylesheet" href="../assets/css/layout.css" />
-	<link rel="stylesheet" href="../assets/css/style.css" />
 	<link rel="stylesheet" href="../assets/plugin/customcontrols/style.css">
 	<link rel="stylesheet" href="../assets/plugin/chalkboard/style.css">
 	<link rel="icon" type="image/svg+xml" href="../assets/logotix-2.svg">
@@ -99,7 +98,7 @@
 - Calculer le travail d'une force le long d'une courbe
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+<div id="courbes" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ## Courbes
 
@@ -137,7 +136,7 @@ $$
 est la longueur de la courbe entre les points $\Gamma(a)$ et $\Gamma(b)$
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+<div id="exemple-1" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ## Exemple : chaînette (câble suspendu, soumis à son poids)
 
@@ -218,7 +217,7 @@ W=\int_a^b \overrightarrow{F}\cdot \overrightarrow{\Gamma'(t)}dt
 $$
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+<div id="exemple-2" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ## Exemple : boule roulant sur un sol en arc de cercle
 
@@ -361,6 +360,10 @@ $$
 				{ icon: '<i class="fa fa-home" onclick = "window.location.href = \'../maths.html\';"></i>',
 				title: 'Page d\'accueil',
 				action: ''
+				},
+				{ icon: '<i class="fa fa-list"></i>',
+				title: 'Table des matières',
+				action: 'toggleTOC();'
 				}
 			]
 		},

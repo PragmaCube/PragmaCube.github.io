@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="../assets/dist/theme/white.css" id="theme" />
     <link rel="stylesheet" href="../assets/css/vs2015.css" />
 	<link rel="stylesheet" href="../assets/css/layout.css" />
-	<link rel="stylesheet" href="../assets/css/style.css" />
 	<link rel="stylesheet" href="../assets/plugin/customcontrols/style.css">
 	<link rel="stylesheet" href="../assets/plugin/chalkboard/style.css">
 	<link rel="icon" type="image/svg+xml" href="../assets/logotix-2.svg">
@@ -91,7 +90,7 @@
 # Cours 6
 ## Intégration
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div id="introduction" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ## Attention
 - Le calcul intégral est un cours à part entière
@@ -99,7 +98,7 @@
 - Ce que fait ce cours : donner une idée générale de l'intégrale et comment l'utiliser pour résoudre des problèmes
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div id="introduction" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+<div id="aire-sous-courbe" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 
 ## Calculer l'aire sous une courbe
@@ -140,7 +139,7 @@ $$
 $$
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+<div id="calcul-integrale" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ## Comment calculer une intégrale ?
 
@@ -161,7 +160,7 @@ $$
 $$
 L'intégrale renverse la dérivée.
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+<div id="exemple-1" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ## Exemple : calculer l'intégrale de $f(x)=3x-1$ entre $1$ et $4$
 
@@ -193,7 +192,7 @@ $$
 $$
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+<div id="primitives" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ## Gadget plus pratique : les primitives
 
@@ -246,7 +245,7 @@ $$
 - Résolution d'équations différentielles
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+<div id="equations-diff" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 # Équations différentielles
 
@@ -281,7 +280,7 @@ où $g$ est une fonction.
  	- Soit les équations n'ont pas de solutions simples (il faut une solution numérique)
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+<div id="exemple-2" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ## Exemples
 
@@ -406,6 +405,10 @@ qui pas de solutions explicites.
 				{ icon: '<i class="fa fa-home" onclick = "window.location.href = \'../maths.html\';"></i>',
 				title: 'Page d\'accueil',
 				action: ''
+				},
+				{ icon: '<i class="fa fa-list"></i>',
+				title: 'Table des matières',
+				action: 'toggleTOC();'
 				}
 			]
 		},
