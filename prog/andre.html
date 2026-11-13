@@ -9,10 +9,10 @@
 		<title>Vidéos d'André</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="icon" type="image/svg+xml" href="assets/logotix-2.svg">
+		<link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="icon" type="image/svg+xml" href="../assets/logotix-2.svg">
 	</head>
-	<script src="assets/js/jQuery.js" onload='$.getJSON("https:\\\\api.github.com/repos/PragmaCube/pragmacube.github.io/deployments", function(data) {
+	<script src="../assets/js/jQuery.js" onload='$.getJSON("https:\\\\api.github.com/repos/PragmaCube/pragmacube.github.io/deployments", function(data) {
       date = data[0].updated_at;
       document.getElementsByClassName("update")[0].innerText = `Dernière mise à jour le ${String(date).split("T")[0]}`;
     });'>
@@ -88,9 +88,9 @@ function run(song, videoplaylist, link){
 						<nav class="links">
 							<ul>
 								<ul>
-								<li><a href="index.html#chapitre1">Chapitre 1</a></li>
-								<li><a href="index.html#chapitre2">Chapitre 2</a></li>
-								<li><a href="index.html#chapitre3">Chapitre 3</a></li>
+								<li><a href="../index.html#chapitre1">Chapitre 1</a></li>
+								<li><a href="../index.html#chapitre2">Chapitre 2</a></li>
+								<li><a href="../index.html#chapitre3">Chapitre 3</a></li>
 							</ul>
 							</ul>
 						</nav>
@@ -160,32 +160,32 @@ function run(song, videoplaylist, link){
 
 								<div style="margin: auto; overflow: hidden;">
   <video style="float: left;" width="560" height="315" id="videoplaylist" preload="auto" tabindex="0" controls="" >
-    <source src="assets/videos/01.mp4" type="video/mp4">
+    <source src="../assets/videos/01.mp4" type="video/mp4">
   </video>
 
   <ul class = "videoUl" id="playlist" style="margin-left: 540px;list-style-type: none;">
       <li class="active">
-        <a href="assets/videos/01.mp4">
+        <a href="../assets/videos/01.mp4">
           Présentation des outils
         </a>
       </li>
       <li>
-          <a href="assets/videos/02.mp4">
+          <a href="../assets/videos/02.mp4">
               Présentation des embouts
           </a>
       </li>
       <li>
-          <a href="assets/videos/03.mp4">
+          <a href="../assets/videos/03.mp4">
               Tutoriel câblage
           </a>
       </li>
       <li>
-          <a href="assets/videos/04.mp4">
+          <a href="../assets/videos/04.mp4">
               Présentation hardware
           </a>
       </li>
       <li>
-          <a href="assets/videos/05.mp4">
+          <a href="../assets/videos/05.mp4">
               Tutoriel soudure
           </a>
       </li>
@@ -203,11 +203,11 @@ function run(song, videoplaylist, link){
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
 
 	</body>
 </html>
